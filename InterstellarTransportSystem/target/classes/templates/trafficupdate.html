@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Interstellar Transport System</title>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+
+    <h2>Update Traffic</h2>
+    <div>
+        <form class="form-horizontal" th:action="@{/trafficupdate}" method="post">
+            <input type="hidden" th:field="*{traffic.routeId}"/>
+            <input type="hidden" th:field="*{traffic.source}"/>
+            <input type="hidden" th:field="*{traffic.destination}"/>
+            <div class="form-group">
+                <select id="paths" th:field="*{trafficModel.sourceVertex}" class="form-control input-lg" style="width: 20%">
+                    <option th:each="v : ${trafficList}"
+                            th:value="${v.vertexId}"
+                            th:text="${v.name}+' ('+${v.vertexId}+')'">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="paths1" th:field="*{trafficModel.destinationVertex}" class="form-control input-lg" style="width: 20%">
+                    <option th:each="v : ${trafficList}"
+                            th:value="${v.vertexId}"
+                            th:text="${v.name}+' ('+${v.vertexId}+')'">
+                    </option>
+                </select>
+            </div>
+                   Traffic Delay: <input type="text" class="form-control" th:field="*{traffic.delay}" style="width: 20%" />
+            <div class="form-horizontal">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

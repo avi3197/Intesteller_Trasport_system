@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>ITS</title>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+
+    <h2>Add Planet</h2>
+    <div>
+        <form class="form-horizontal" th:object="${vertex}" th:action="@{/vertex}" method="post">
+                    ID :<input type="text" class="form-control" th:field="*{vertexId}" style="width: 20%"/><br />
+                    NAME :<input type="text" class="form-control" th:field="*{name}" style="width: 20%"/><br />
+            <div class="form-horizontal">
+                <button type="submit" class="btn btn-success ">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

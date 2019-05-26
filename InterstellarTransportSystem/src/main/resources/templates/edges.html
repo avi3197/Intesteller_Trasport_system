@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>ITS</title>
+    
+    <style>
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+  padding: 5px
+}
+</style>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(edges)}">
+        <h1>All Routes</h1>
+        <table>
+            <tr>
+                <th style="padding: 5px">Route Id</th>
+                <th style="padding: 5px">Planet Origin</th>
+                <th style="padding: 5px">Planet Destination</th>
+                <th style="padding: 5px">Distance(Light Years)</th>
+                <th style="padding: 5px">View</th>
+                <th style="padding: 5px">Edit</th>
+                <th style="padding: 5px">Delete</th>
+            </tr>
+            <tr th:each="edge : ${edges}">
+                <td style="padding: 5px;" th:text="${edge.edgeId}">Route Id</td>
+                <td style="padding: 5px;" th:text="${edge.source}">Planet Origin</td>
+                <td style="padding: 5px;" th:text="${edge.destination}">Planet Destination</td>
+                <td style="padding: 5px;" th:text="${edge.distance}">Distance(Light Years)</td>
+                <td style="padding: 5px"><a th:href="${'/edge/' + edge.recordId}">View</a></td>
+                <td style="padding: 5px"><a th:href="${'/edge/edit/' + edge.recordId}">Edit</a></td>
+                <td style="padding: 5px"><a th:href="${'/edge/delete/' + edge.recordId}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

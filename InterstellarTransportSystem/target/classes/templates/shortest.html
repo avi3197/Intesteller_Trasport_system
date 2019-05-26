@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>ITS</title>
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+    <div>
+       <h1>Shortest Path</h1>
+        <form class="form-horizontal" th:action="@{/getShortestPath}" th:object="${shortest}" method="post">
+            <input type="hidden" th:field="*{vertexId}" />
+            <label for="paths">Source: </label><input type="text" th:field="*{vertexName}" class="form-control" style="width: 20%"/>
+            <label for="paths">Destination:</label>
+            <br />
+            <select id="paths" th:field="*{selectedVertex}" class="form-control input-lg" style="width:20%">
+                <option th:each="v : ${pathList}"
+                        th:value="${v.vertexId}"
+                        th:text="${v.name}+' ('+${v.vertexId}+')'">
+                </option>
+            </select>
+            <br />
+            
+            <br />
+            <div class="form-horizontal">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

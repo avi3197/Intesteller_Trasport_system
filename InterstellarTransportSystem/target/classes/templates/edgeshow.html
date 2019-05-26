@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>ITS</title>
+    
+    <style>
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+  padding: 5px
+}
+</style>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+
+    <h2>Details</h2>
+    
+    <table>
+    <tr>
+    	<th style="padding: 5px">ID</th>
+    	<th style="padding: 5px">ORIGIN</th>
+    	<th style="padding: 5px">DESTINATION</th>
+    	<th style="padding: 5px">DISTANCE</th>
+    </tr>
+    <tr>
+    	<td style="padding: 5px"><p th:text="${edge.edgeId}"></p></td>
+    	<td style="padding: 5px"><p th:text="${edge.source}"></p></td>
+    	<td style="padding: 5px"><p th:text="${edge.destination}"></p></td>
+    	<td style="padding: 5px"><p th:text="${edge.distance}"></p></td>
+    </tr>
+    
+    
+    </table>
+    
+    
+</div>
+
+</body>
+</html>

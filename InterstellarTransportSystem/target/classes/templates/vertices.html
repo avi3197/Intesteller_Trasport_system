@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>ITS</title>
+    
+        <style>
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+  padding: 5px
+}
+</style>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(vertices)}">
+        <h1>Planets</h1>
+        <table>
+            <tr>
+                <th style="padding: 5px">Id</th>
+                <th style="padding: 5px">Name</th>
+                <th style="padding: 5px">View</th>
+                <th style="padding: 5px">Edit</th>
+                <th style="padding: 5px">Delete</th>
+            </tr>
+            <tr th:each="vertex : ${vertices}">
+                <td style="padding: 5px" th:text="${vertex.vertexId}"><a href="/vertices/${vertex.vertexId}">Id</a></td>
+                <td style="padding: 5px" th:text="${vertex.name}">Planet Name</td>
+                <td style="padding: 5px"><a th:href="${'/vertex/' + vertex.vertexId}">View</a></td>
+                <td style="padding: 5px"><a th:href="${'/vertex/edit/' + vertex.vertexId}">Edit</a></td>
+                <td style="padding: 5px"><a th:href="${'/vertex/delete/' + vertex.vertexId}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

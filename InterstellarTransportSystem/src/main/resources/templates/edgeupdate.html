@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>ITS</title>
+
+    <!--/*/ <th:block th:include="headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="header :: header"></th:block> /*/-->
+
+    <h2>Update</h2>
+    <div>
+        <form class="form-horizontal" th:action="@{/edgeupdate}" method="post">
+            <input type="hidden" th:field="*{edge.recordId}"/>
+            <input type="hidden" th:field="*{edge.edgeId}"/>
+            <input type="hidden" th:field="*{edge.source}"/>
+            <input type="hidden" th:field="*{edge.destination}"/>
+            <input type="hidden" th:field="*{edge.timeDelay}"/>
+            <div class="form-group">
+                <select id="paths" th:field="*{edgeModel.sourceVertex}" class="form-control input-lg" style="width: 20%">
+                    <option th:each="v : ${routeList}"
+                            th:value="${v.vertexId}"
+                            th:text="${v.name}+' ('+${v.vertexId}+')'">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="paths1" th:field="*{edgeModel.destinationVertex}" class="form-control input-lg" style="width:20%">
+                    <option th:each="v : ${routeList}"
+                            th:value="${v.vertexId}"
+                            th:text="${v.name}+' ('+${v.vertexId}+')'">
+                    </option>
+                </select>
+            </div>
+             Distance:<input type="text" class="form-control" th:field="*{edge.distance}" style="width: 20%"/><br />
+            <div class="form-horizontal">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
